@@ -1,0 +1,21 @@
+{
+  "name": "adhan-mca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmed Farooki",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "3.5.0",
+    "cheerio": "1.0.0-rc.2",
+    "lodash": "4.17.4",
+    "md5": "2.2.1",
+    "play-sound": "1.1.1",
+    "pouchdb": "6.2.0",
+    "request": "2.81.0",
+    "trim": "0.0.1"
+  }
+}
