@@ -27,18 +27,15 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'https://github.com/ahmedfarooki/adhan-mca.git',
       path : '/home/pi/apps/adhan-mca',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'pm2 reload ecosystem.config.js --env production'
     },
-    dev : {
-      user : 'node',
-      host : '212.83.163.1',
+    build : {
+      user : 'pi',
+      host : '10.0.0.224',
       ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
+      repo : 'https://github.com/ahmedfarooki/adhan-mca.git',
       path : '/home/pi/apps/adhan-mca',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
-      env  : {
-        NODE_ENV: 'dev'
-      }
+      'post-deploy' : 'npm install'
     }
   }
 };
