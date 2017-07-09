@@ -36,7 +36,6 @@ function getPrayers() {
     return db.get(prayer)
     .then(data => {
       schedule[prayer] = data.times.adhan;
-      schedule['fajar'] = '11:12';
     });
   }).return(schedule)
   .tap(schedule => {
