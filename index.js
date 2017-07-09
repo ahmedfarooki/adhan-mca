@@ -19,6 +19,7 @@ const PRAYERS = [
 
 
 function init() {
+  console.log("🕋  Starting up adhan-mca...");
   return scraper.update()
   .then(getPrayers)
   .then(setAlarms)
@@ -35,9 +36,13 @@ function getPrayers() {
     return db.get(prayer)
     .then(data => {
       schedule[prayer] = data.times.adhan;
-      schedule['fajar'] = '09:12';
+      schedule['fajar'] = '11:12';
     });
-  }).return(schedule);
+  }).return(schedule)
+  .tap(schedule => {
+    console.log("🕌  Got the adhan schedules: ");
+    console.log(schedule);
+  });
 }
 
 function getAdhan(prayer) {
