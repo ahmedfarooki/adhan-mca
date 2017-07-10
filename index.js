@@ -61,7 +61,7 @@ function setAlarms(schedule) {
     const adhan = getAdhan(prayer);
 
     clock.setAlarm(time, () => {
-      console.log(`Playing ${prayer} Adhan`);
+      console.log(`🔊 Playing ${prayer} Adhan`);
       player.play(adhan, function(err){
         if (err) throw err;
       });

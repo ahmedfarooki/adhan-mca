@@ -33,7 +33,7 @@ class Clock {
       handler,
       lastPlayed: null
     };
-
+    console.log(`⏰  Setting alarm for ${time}`);
     console.log(this.alarms);
   }
 
@@ -47,7 +47,7 @@ class Clock {
 
   clearAllAlarms() {
     this.alarms = {};
-    console.log('Cleared all alarms');
+    console.log('✨  Cleared all alarms');
   }
 
 }
