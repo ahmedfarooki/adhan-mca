@@ -4,13 +4,17 @@ const MINUTE = 60000;
 
 class Clock {
   constructor() {
-    this.alarms = {};
+    this.alarms   = {};
+    this.lastTick = null;
 
     this.clock = setInterval(() => {
       const date = new Date();
       const time = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
 
-      console.log('tick > ' + time + ':' + ('0' + date.getSeconds()).slice(-2));
+      if (this.lastTick !== time.slice(-5)) {
+        this.lastTick = time.slice(-5);
+        console.log((new Date()) + ' tick > ' + time + ':' + ('0' + date.getSeconds()).slice(-2));
+      }
 
       if (this.alarms && this.alarms[time]) {
         if(!this.alarms[time].lastPlayed || this.alarms[time].lastPlayed > Date.now() + MINUTE) {
