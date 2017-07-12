@@ -207,6 +207,8 @@ function getUpdatedAt() {
 
 
 function update() {
+  let changes = false;
+
   return lastUpdatedAt()
   .then(minutes => {
     if (minutes !== null && minutes < config.MINIMUM_MINUTES) {
@@ -223,12 +225,13 @@ function update() {
       if (savedHash === hash) {
         console.log("No changes in prayer times.");
       }
+      else {
+        changes = true;
+      }
       return savePrayers(prayers);
     })
   })
-  .then(() => {
-    return
-  })
+  .then(() => changes)
   .catch(error => {
     if (error.message === 'Skipping updating prayer schedule, too soon to try.') {
       console.log(error.message);
