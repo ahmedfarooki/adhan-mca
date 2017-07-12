@@ -1,6 +1,7 @@
 'use strict';
 
-const Promise = require('bluebird');
+global.Promise = require('bluebird');
+
 const PouchDB = require('pouchdb');
 const player  = require('play-sound')();
 const Clock   = require('./clock');
@@ -61,12 +62,21 @@ function setAlarms(schedule) {
     const adhan = getAdhan(prayer);
 
     clock.setAlarm(time, () => {
-      console.log(`🔊 Playing ${prayer} Adhan`);
+      console.log(`🔊  Playing ${prayer} Adhan`);
       player.play(adhan, function(err){
         if (err) throw err;
       });
 
-      return scraper.update();
+      return scraper.update()
+      .then(hasChanged => {
+        if (hasChanged) {
+          clock.clearAllAlarms();
+
+          console.log(`Updating alarms`);
+          return getPrayers()
+          .then(setAlarms);
+        }
+      });
     });
   }
 }

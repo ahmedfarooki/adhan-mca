@@ -1,6 +1,5 @@
 'use strict';
 
-const Promise   = require('bluebird');
 const request   = require('request');
 const cheerio   = require('cheerio');
 const trim      = require('trim');
@@ -231,7 +230,7 @@ function update() {
       return savePrayers(prayers);
     })
   })
-  .then(() => changes)
+  .return(changes)
   .catch(error => {
     if (error.message === 'Skipping updating prayer schedule, too soon to try.') {
       console.log(error.message);
