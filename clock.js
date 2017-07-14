@@ -17,7 +17,7 @@ class Clock {
       }
 
       if (this.alarms && this.alarms[time]) {
-        if(!this.alarms[time].lastPlayed || this.alarms[time].lastPlayed > Date.now() + MINUTE) {
+        if(this.alarms[time].lastPlayed === null || this.alarms[time].lastPlayed > Date.now() + MINUTE) {
           console.log(`Alarm for: ${time}`);
 
           this.alarms[time].lastPlayed = Date.now();
