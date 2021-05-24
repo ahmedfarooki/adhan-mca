@@ -121,4 +121,4 @@ class Adhan {
   };
 }
 
-modules.export = Adhan;
+module.exports = Adhan;
